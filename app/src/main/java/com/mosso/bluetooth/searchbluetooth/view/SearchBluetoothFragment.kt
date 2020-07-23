@@ -168,7 +168,12 @@ class SearchBluetoothFragment : Fragment() {
     private val callBack: ScanCallback = object : ScanCallback() {
         override fun onScanResult(callbackType: Int, result: ScanResult) {
             super.onScanResult(callbackType, result)
-            adapter.addDevice(DevicesBluetooth(result.rssi.toString(), result.device.name))
+            adapter.addDevice(
+                DevicesBluetooth(
+                    result.rssi.toString(),
+                    result.device?.name ?: "WITHOUT_NAME"
+                )
+            )
         }
     }
 
